@@ -84,6 +84,11 @@ echo. >> triage.txt
 
 ::Devices and Storage::
 ::teammates write your code here
+wmic diskdrive get caption,deviceid,mediatype,size,status
+wmic logicaldisk get name,description,filesystem,size,freespace 
+wmic path CIM_USBDevice
+pnputil /enum-devices /connected
+
 
 ::Logs & event traces::
 ::teammates write your code here. I also suggest saving logs to a separate file instead of the triage.txt file because log files can be very long.
