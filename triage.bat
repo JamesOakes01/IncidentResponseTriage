@@ -15,4 +15,22 @@ echo. >> triage.txt
 echo --- SYSTEM INFORMATION --- >> triage.txt
 echo See systeminfo.txt for details >> triage.txt
 systeminfo > systeminfo.txt
+echo. >> triage.txt
 
+::Gathering Environment Variables::
+echo --- Environment Variables --- >> triage.txt
+set >> triage.txt
+echo. >> triage.txt
+
+::User Accounts Information::
+echo --- USER ACCOUNTS --- >> triage.txt
+echo Running "wmic useraccount" to gather user account information and saving to a separate CSV file... >> triage.txt
+wmic useraccount >> useraccounts.csv
+echo. >> triage.txt
+echo Listing the contents of the C:\Users directory... >> triage.txt
+echo ========================================================= >> triage.txt
+dir C:\Users >> triage.txt
+echo. >> triage.txt
+
+::Running Processess and Services::
+echo --- RUNNING PROCESSES --- >> triage.txt
