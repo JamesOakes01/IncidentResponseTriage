@@ -84,10 +84,13 @@ echo. >> triage.txt
 
 ::Devices and Storage::
 ::teammates write your code here
-wmic diskdrive get caption,deviceid,mediatype,size,status
-wmic logicaldisk get name,description,filesystem,size,freespace 
-wmic path CIM_USBDevice
-pnputil /enum-devices /connected
+echo --- INFO ABOUT DEVICES AND STORAGE --- >> triage.txt
+echo. >> triage.txt
+::echo Saving to connected-devices.txt >> triage.txt
+wmic diskdrive get caption,deviceid,mediatype,size,status >> triage.txt
+wmic logicaldisk get name,description,filesystem,size,freespace >> triage.txt
+wmic path CIM_USBDevice >> triage.txt
+pnputil /enum-devices /connected >> triage.txt
 
 
 ::Logs & event traces::
@@ -95,5 +98,6 @@ pnputil /enum-devices /connected
 
 ::Current USB Device connections::
 echo --- USB DEVICE INFORMATION --- >> triage.txt
+echo Saving to connectedusbdevices.txt... >> triage.txt
 wmic path Win32_PnPEntity where "DeviceID like 'USB%%'" get Name,DeviceID > connectedusbdevices.txt
 echo. >> triage.txt
